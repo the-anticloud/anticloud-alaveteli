@@ -1,0 +1,769 @@
+{
+  "schema": "anticloud.tier-bench/1",
+  "project": "ALAVETELI",
+  "source": {
+    "repo_path": "E:\\fenta\\Downloads\\The Anticloud\\ANTICLOUD_REPOS\\GOVERNMENT\\ALAVETELI\\UPSTREAM_CLONE",
+    "git": {
+      "head": "6ad79e9334c4131078c6a67560452bfd5e7781b8",
+      "url": "https://github.com/mysociety/alaveteli",
+      "branch": "develop",
+      "committed_at": "2026-09-30T13:40:27+01:00"
+    }
+  },
+  "metrics": {
+    "files_total": 3245,
+    "source_files_scanned": 1679,
+    "lines_of_code": 161548,
+    "languages": {
+      ".rb": 1613,
+      ".erb": 746,
+      ".po": 146,
+      "(none)": 137,
+      ".png": 103,
+      ".scss": 95,
+      ".eml": 72,
+      ".js": 64,
+      ".yml": 44,
+      ".jpg": 35,
+      ".txt": 27,
+      ".rake": 27,
+      ".json": 16,
+      ".example": 13,
+      ".expected": 11
+    }
+  },
+  "licence": {
+    "spdx": "AGPL-3.0",
+    "class": "B",
+    "source_file": "LICENSE.txt",
+    "redistribution_allowed": false
+  },
+  "dependencies": {
+    "count": 0,
+    "unique": 0,
+    "by_ecosystem": {},
+    "list": []
+  },
+  "owasp_top10": {
+    "total_findings": 309,
+    "files_with_findings": 251,
+    "severity": {
+      "high": 19,
+      "medium": 8,
+      "low": 282
+    },
+    "categories": {
+      "A01-BrokenAccessControl": {
+        "count": 0,
+        "findings": []
+      },
+      "A02-CryptographicFailures": {
+        "count": 6,
+        "findings": [
+          {
+            "severity": "medium",
+            "file": "spec/lib/mail_handler/backends/mail_backend_spec.rb",
+            "line": 349,
+            "cwe": "CWE-327",
+            "snippet": "hexdigest = Digest::MD5.hexdigest('hereisthetext')"
+          },
+          {
+            "severity": "medium",
+            "file": "spec/factories/foi_attachments.rb",
+            "line": 41,
+            "cwe": "CWE-327",
+            "snippet": "foi_attachment.hexdigest = Digest::MD5.hexdigest(body)"
+          },
+          {
+            "severity": "medium",
+            "file": "script/update-rubocop-config.rb",
+            "line": 32,
+            "cwe": "CWE-327",
+            "snippet": "hash = Digest::MD5.hexdigest(uri.to_s)"
+          },
+          {
+            "severity": "medium",
+            "file": "lib/normalize_string.rb",
+            "line": 97,
+            "cwe": "CWE-327",
+            "snippet": "filename = \"/var/tmp/#{Digest::MD5.hexdigest(text)}.txt\""
+          },
+          {
+            "severity": "medium",
+            "file": "lib/mail_handler/backends/mail_backend.rb",
+            "line": 396,
+            "cwe": "CWE-327",
+            "snippet": "hexdigest: Digest::MD5.hexdigest(body)"
+          },
+          {
+            "severity": "medium",
+            "file": "app/models/foi_attachment.rb",
+            "line": 163,
+            "cwe": "CWE-327",
+            "snippet": "self.hexdigest ||= Digest::MD5.hexdigest(d)"
+          }
+        ]
+      },
+      "A03-Injection": {
+        "count": 16,
+        "findings": [
+          {
+            "severity": "high",
+            "file": "lib/mail_handler.rb",
+            "line": 20,
+            "cwe": "CWE-78",
+            "snippet": "IO.popen(\"tnef -K -C #{dir} 2> /dev/null\", \"wb\") do |f|"
+          },
+          {
+            "severity": "high",
+            "file": "lib/mail_handler/reply_handler.rb",
+            "line": 86,
+            "cwe": "CWE-78",
+            "snippet": "IO.popen(%Q(/usr/sbin/sendmail -i \"#{forward_to}\"), 'wb') do |f|"
+          },
+          {
+            "severity": "high",
+            "file": "app/models/concerns/searchable.rb",
+            "line": 87,
+            "cwe": "CWE-89",
+            "snippet": "c = \"(SELECT concat(#{col}, ' ') FROM #{self.class.table_name} WHERE id=$1)\""
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/general.js",
+            "line": 1,
+            "cwe": "CWE-78",
+            "snippet": "$(document).ready(function() {"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/monitor-text-length.js",
+            "line": 3,
+            "cwe": "CWE-78",
+            "snippet": "var $display = $(this);"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/select-authorities.js",
+            "line": 1,
+            "cwe": "CWE-78",
+            "snippet": "$(document).ready(function() {"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/snippets.js",
+            "line": 10,
+            "cwe": "CWE-78",
+            "snippet": "if ( $(this).attr('data-tags') ) {"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/wizard.js",
+            "line": 3,
+            "cwe": "CWE-78",
+            "snippet": "this.$el = $(target);"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/alaveteli_pro/embargo_dropdown.js",
+            "line": 10,
+            "cwe": "CWE-78",
+            "snippet": "if($(this).val() !== '') {"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/alaveteli_pro/draft_batch_summary/body-list.js",
+            "line": 49,
+            "cwe": "CWE-78",
+            "snippet": "return $(form).data('body-id');"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/alaveteli_pro/draft_batch_summary/body.js",
+            "line": 29,
+            "cwe": "CWE-78",
+            "snippet": "var $this = $(this);"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/alaveteli_pro/batch_authority_search/browse.js",
+            "line": 42,
+            "cwe": "CWE-78",
+            "snippet": "var listItem = $(this).parent(listItemSelector);"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/alaveteli_pro/batch_authority_search/pagination.js",
+            "line": 40,
+            "cwe": "CWE-78",
+            "snippet": "var $this = $(this);"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/alaveteli_pro/batch_authority_search/result.js",
+            "line": 32,
+            "cwe": "CWE-78",
+            "snippet": "var $this = $(this);"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/admin/admin.js",
+            "line": 2,
+            "cwe": "CWE-78",
+            "snippet": "$(document).ready(function(){"
+          },
+          {
+            "severity": "high",
+            "file": "app/assets/javascripts/admin/holidays.js",
+            "line": 5,
+            "cwe": "CWE-78",
+            "snippet": "var new_call = $.ajax({ type: 'GET', url: $(this).attr('href')});"
+          }
+        ]
+      },
+      "A04-InsecureDesign": {
+        "count": 123,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "spec/spec_helper.rb",
+            "line": 140,
+            "cwe": "CWE-",
+            "snippet": "# Helper with_xxx methods for working with feature flags"
+          },
+          {
+            "severity": "low",
+            "file": "spec/views/request/_incoming_correspondence.text.erb_spec.rb",
+            "line": 30,
+            "cwe": "CWE-",
+            "snippet": "# TODO: Add better generic success case"
+          },
+          {
+            "severity": "low",
+            "file": "spec/views/reports/new.erb_spec.rb",
+            "line": 33,
+            "cwe": "CWE-",
+            "snippet": "# TODO: No easy way of asserting hidden field"
+          },
+          {
+            "severity": "low",
+            "file": "spec/views/admin/notes/_show.html.erb_spec.rb",
+            "line": 16,
+            "cwe": "CWE-",
+            "snippet": "# TODO: Improve CSS class name"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/censor_rule_spec.rb",
+            "line": 343,
+            "cwe": "CWE-",
+            "snippet": "expect(rule.apply_to_binary(text)).to eq('Some xxxxxx text')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/customstates.rb",
+            "line": 30,
+            "cwe": "CWE-",
+            "snippet": "# TODO: shouldn't this be 15 days after the date the status was"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/foi_attachment_spec.rb",
+            "line": 736,
+            "cwe": "CWE-",
+            "snippet": "is_expected.to include('xxxxxxxxxxxxx')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/incoming_message_error_spec.rb",
+            "line": 19,
+            "cwe": "CWE-",
+            "snippet": "expect(IncomingMessageError.new(unique_id: 'xxx')).to be_valid"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/incoming_message_spec.rb",
+            "line": 719,
+            "cwe": "CWE-",
+            "snippet": "expected = 'His email address was xxxxxxx@xxxxxxx.xxx'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/info_request_spec.rb",
+            "line": 3144,
+            "cwe": "CWE-",
+            "snippet": "expected = 'His email address was xxxxxxx@xxxxxxx.xxx'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/mail_server_log_spec.rb",
+            "line": 230,
+            "cwe": "CWE-",
+            "snippet": "# TODO: Check that each log line is attached to the correct request"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/outgoing_message_spec.rb",
+            "line": 761,
+            "cwe": "CWE-",
+            "snippet": "expected = 'His email address was xxxxxxx@xxxxxxx.xxx'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/public_body_spec.rb",
+            "line": 1717,
+            "cwe": "CWE-",
+            "snippet": "# TODO: Not sure why trying to do a I18n.with_locale fails here. Seems related to"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/statistics_spec.rb",
+            "line": 5,
+            "cwe": "CWE-",
+            "snippet": "# TODO"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/user_spec.rb",
+            "line": 526,
+            "cwe": "CWE-",
+            "snippet": "# TODO: not finished"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/user/spreadable_alerts.rb",
+            "line": 17,
+            "cwe": "CWE-",
+            "snippet": "# TODO"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/project/queue_spec.rb",
+            "line": 12,
+            "cwe": "CWE-",
+            "snippet": "# HACK: extractable_requests_count uses attributes_for. The factory it"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/info_request/response_rejection/bounce_spec.rb",
+            "line": 12,
+            "cwe": "CWE-",
+            "snippet": "To: Requester <request-333-xxx@example.com>"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/to_do_list/expiring_embargo_spec.rb",
+            "line": 3,
+            "cwe": "CWE-",
+            "snippet": "RSpec.describe AlaveteliPro::ToDoList::ExpiringEmbargo do"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/to_do_list/item_spec.rb",
+            "line": 3,
+            "cwe": "CWE-",
+            "snippet": "RSpec.describe AlaveteliPro::ToDoList::Item do"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/to_do_list/list_spec.rb",
+            "line": 3,
+            "cwe": "CWE-",
+            "snippet": "RSpec.describe AlaveteliPro::ToDoList::List do"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/to_do_list/new_response_spec.rb",
+            "line": 3,
+            "cwe": "CWE-",
+            "snippet": "RSpec.describe AlaveteliPro::ToDoList::NewResponse do"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/to_do_list/overdue_request_spec.rb",
+            "line": 3,
+            "cwe": "CWE-",
+            "snippet": "RSpec.describe AlaveteliPro::ToDoList::OverdueRequest do"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/to_do_list/very_overdue_request_spec.rb",
+            "line": 3,
+            "cwe": "CWE-",
+            "snippet": "RSpec.describe AlaveteliPro::ToDoList::VeryOverdueRequest do"
+          },
+          {
+            "severity": "low",
+            "file": "spec/mailers/application_mailer_spec.rb",
+            "line": 47,
+            "cwe": "CWE-",
+            "snippet": "attachments['original.eml'] = 'xxx'"
+          }
+        ]
+      },
+      "A05-SecurityMisconfiguration": {
+        "count": 2,
+        "findings": [
+          {
+            "severity": "high",
+            "file": "spec/controllers/attachments_controller_spec.rb",
+            "line": 102,
+            "cwe": "CWE-942",
+            "snippet": "expect(response.headers['Access-Control-Allow-Origin']).to eq('*')"
+          },
+          {
+            "severity": "high",
+            "file": "app/controllers/attachments_controller.rb",
+            "line": 168,
+            "cwe": "CWE-942",
+            "snippet": "headers['Access-Control-Allow-Origin'] = '*'"
+          }
+        ]
+      },
+      "A06-VulnerableComponents": {
+        "count": 0,
+        "findings": []
+      },
+      "A07-AuthFailures": {
+        "count": 1,
+        "findings": [
+          {
+            "severity": "high",
+            "file": "spec/models/user_spec.rb",
+            "line": 306,
+            "cwe": "CWE-798",
+            "snippet": "@user.password = 'insecurepassword'"
+          }
+        ]
+      },
+      "A08-SoftwareDataIntegrity": {
+        "count": 154,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "spec/views/user/sign.html.erb_spec.rb",
+            "line": 30,
+            "cwe": "CWE-319",
+            "snippet": "uri: 'http://bad.place.com/admin',"
+          },
+          {
+            "severity": "low",
+            "file": "spec/views/general/_opengraph_tags.html.erb_spec.rb",
+            "line": 18,
+            "cwe": "CWE-319",
+            "snippet": "to match('content=\"http://test.host/assets/logo-opengraph-pro')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/views/alaveteli_pro/subscription_mailer/payment_failed.text.erb_spec.rb",
+            "line": 9,
+            "cwe": "CWE-319",
+            "snippet": "assign(:subscriptions_url, 'http://test.host/profile/subscriptions')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/services/info_request_batch_metrics_spec.rb",
+            "line": 11,
+            "cwe": "CWE-319",
+            "snippet": "request_url = 'http://test.host/request/' + request.url_title"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/blog_spec.rb",
+            "line": 10,
+            "cwe": "CWE-319",
+            "snippet": "and_return('http://blog.example.com')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/comment_spec.rb",
+            "line": 235,
+            "cwe": "CWE-319",
+            "snippet": "comment.body = link = \"http://example.com\""
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/foi_attachment_spec.rb",
+            "line": 748,
+            "cwe": "CWE-319",
+            "snippet": "with(attachment_url: 'http://example.com/attachment')."
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/holiday_import_spec.rb",
+            "line": 67,
+            "cwe": "CWE-319",
+            "snippet": "holiday_import = HolidayImport.new(ical_feed_url: 'http://www.example.com')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/holiday_spec.rb",
+            "line": 52,
+            "cwe": "CWE-319",
+            "snippet": "# See http://www.whatdotheyknow.com/help/officers#days"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/incoming_message_spec.rb",
+            "line": 1249,
+            "cwe": "CWE-319",
+            "snippet": "# http://www.whatdotheyknow.com/request/post_commercial_manager_librarie#incoming-17233"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/info_request_spec.rb",
+            "line": 3498,
+            "cwe": "CWE-319",
+            "snippet": "@info_request = InfoRequest.new(external_url: 'http://www.example.com',"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/mail_server_log_spec.rb",
+            "line": 220,
+            "cwe": "CWE-319",
+            "snippet": "# See http://onlamp.com/onlamp/2004/01/22/postfix.html"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/outgoing_message_spec.rb",
+            "line": 850,
+            "cwe": "CWE-319",
+            "snippet": "A full history of my FOI request and all correspondence is available on the Internet at this address: http://test.host/request/a_test_title"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/profile_photo_spec.rb",
+            "line": 66,
+            "cwe": "CWE-319",
+            "snippet": "svg_data = '<?xml version=\"1.0\"?><svg xmlns=\"http://www.w3.org/2000/svg\" />'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/public_body_change_request_spec.rb",
+            "line": 177,
+            "cwe": "CWE-319",
+            "snippet": "source_url: 'http://www.example.com',"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/public_body_spec.rb",
+            "line": 1071,
+            "cwe": "CWE-319",
+            "snippet": "@public_body.tag_string = 'url:http://www.flourish.org'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/user_spec.rb",
+            "line": 2375,
+            "cwe": "CWE-319",
+            "snippet": "user.about_me = link = \"http://example.com\""
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/project/export_spec.rb",
+            "line": 88,
+            "cwe": "CWE-319",
+            "snippet": "[{ request: 'Foo', request_url: 'http://example.com' }]"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/outgoing_message/template/internal_review_spec.rb",
+            "line": 33,
+            "cwe": "CWE-319",
+            "snippet": "url: 'http://test.host/request/a_test_title' }"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/blog/post_spec.rb",
+            "line": 35,
+            "cwe": "CWE-319",
+            "snippet": "FactoryBot.create(:blog_post, url: 'http://example.com/blog_post_1')"
+          },
+          {
+            "severity": "low",
+            "file": "spec/models/alaveteli_pro/invoice_spec.rb",
+            "line": 78,
+            "cwe": "CWE-319",
+            "snippet": "'http://example.com/receipt'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/mailers/request_mailer_spec.rb",
+            "line": 6,
+            "cwe": "CWE-319",
+            "snippet": "long_url = 'http://www.this.is.quite.a.long.url.flourish.org/there.is.no.way.it.is.short.whatsoever'"
+          },
+          {
+            "severity": "low",
+            "file": "spec/mailers/previews/contact_mailer_preview.rb",
+            "line": 4,
+            "cwe": "CWE-319",
+            "snippet": "bob, alice, 'http://www.example.org/user/bob/profile',"
+          },
+          {
+            "severity": "low",
+            "file": "spec/mailers/previews/public_body_change_request_mailer_preview.rb",
+            "line": 16,
+            "cwe": "CWE-319",
+            "snippet": "source_url: 'http://source.example.com',"
+          },
+          {
+            "severity": "low",
+            "file": "spec/mailers/previews/user_mailer_preview.rb",
+            "line": 35,
+            "cwe": "CWE-319",
+            "snippet": "'http:///www.example.org/c/ABC'"
+          }
+        ]
+      },
+      "A09-LoggingMonitoringFailures": {
+        "count": 0,
+        "findings": []
+      },
+      "A10-SSRF": {
+        "count": 7,
+        "findings": [
+          {
+            "severity": "low",
+            "file": "config/routes.rb",
+            "line": 86,
+            "cwe": "CWE-601",
+            "snippet": "get '/body_statistics' => redirect('/statistics#public_bodies'), :as => :public_bodies_statistics"
+          },
+          {
+            "severity": "low",
+            "file": "config/routes/redirects.rb",
+            "line": 89,
+            "cwe": "CWE-601",
+            "snippet": "to: redirect('?locale=%{locale}')"
+          },
+          {
+            "severity": "medium",
+            "file": "app/javascript/public/helpers/stream_update.js",
+            "line": 12,
+            "cwe": "CWE-918",
+            "snippet": "fetch(url.toString(), {"
+          },
+          {
+            "severity": "medium",
+            "file": "app/javascript/admin/controllers/tagging_controller.js",
+            "line": 6,
+            "cwe": "CWE-918",
+            "snippet": "tagLists[url] ||= fetch(url)."
+          },
+          {
+            "severity": "low",
+            "file": "app/controllers/application_controller.rb",
+            "line": 183,
+            "cwe": "CWE-601",
+            "snippet": "do_post_redirect(post_redirect, user)"
+          },
+          {
+            "severity": "low",
+            "file": "app/controllers/user_controller.rb",
+            "line": 523,
+            "cwe": "CWE-601",
+            "snippet": "post_redirect = generate_confirmation_post_redirect(user)"
+          },
+          {
+            "severity": "low",
+            "file": "app/controllers/alaveteli_pro/draft_info_request_batches_controller.rb",
+            "line": 6,
+            "cwe": "CWE-601",
+            "snippet": "respond_or_redirect(@draft)"
+          }
+        ]
+      }
+    }
+  },
+  "owasp_llm_top10": {
+    "total_findings": 0,
+    "files_with_findings": 0,
+    "severity": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "categories": {
+      "LLM01-PromptInjection": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM02-SensitiveInfoDisclosure": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM03-SupplyChain": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM04-DataPoisoning": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM05-ImproperOutputHandling": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM06-ExcessiveAgency": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM07-SystemPromptLeak": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM08-VectorEmbeddingWeaknesses": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM09-Misinformation": {
+        "count": 0,
+        "findings": []
+      },
+      "LLM10-UnboundedConsumption": {
+        "count": 0,
+        "findings": []
+      }
+    }
+  },
+  "sbom": {
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.5",
+    "serialNumber": "urn:uuid:04f3acdb-9a79-5caa-b6a8-b50fca2bc3db",
+    "version": 1,
+    "metadata": {
+      "timestamp": "2026-10-06T12:26:17Z",
+      "component": {
+        "type": "application",
+        "name": "ALAVETELI",
+        "version": "6ad79e9334c4",
+        "bom-ref": "pkg:generic/anticloud/ALAVETELI@6ad79e9334c4",
+        "purl": "pkg:generic/anticloud/ALAVETELI@6ad79e9334c4",
+        "licenses": [
+          {
+            "license": {
+              "id": "AGPL-3.0"
+            }
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "anticloud:source-commit",
+          "value": "6ad79e9334c4131078c6a67560452bfd5e7781b8"
+        },
+        {
+          "name": "anticloud:source-url",
+          "value": "https://github.com/mysociety/alaveteli"
+        },
+        {
+          "name": "anticloud:tier",
+          "value": "tier-agent"
+        }
+      ]
+    },
+    "components": []
+  },
+  "elapsed_seconds": 110.73
+}

@@ -540,10 +540,10 @@
  "version": "1.0.0",
  "source": {
   "git": {
-   "head": "d3618917ce8e7cfe842cb38d43aaf24de8013000",
-   "url": "https://github.com/mysociety/alavetelitheme",
-   "branch": "master",
-   "sha_verified_from": "GitHub API commits/master | unified 2026-10-14 (API-exists + content/clone anchor)"
+   "url": "https://github.com/mysociety/alaveteli",
+   "head": "69713bc643efe7f4d513e0932aff7a867b14dc1a",
+   "sha_verified_from": "revendor 2026-10-15: GitHub API commit lookup",
+   "previous_substitute": "https://github.com/mysociety/alavetelitheme"
   }
  }
 }
